@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>IoT Robot</title>
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/home.css') }}">
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+        <script defer src="{{ url_for('static', filename='script/web_socket.js') }}"></script>
+        <script defer src="{{ url_for('static', filename='script/joystick.js') }}"></script>
+        <script defer src="{{ url_for('static', filename='script/chart.js') }}"></script>
+    </head>
+    <body>
+    <div class="ctn">
+        <div class="status-ctn">
+            <h2 id="status">Status: Connected</h2>
+            <button onclick="disconnectFromRobot()">Disconnect</button>
+            <h2>Available Robots:</h2>
+            <div class="robots-ctn" id="robots"></div>
+        </div>
+        <div class="input-ctn">
+            <div class="message-ctn">
+                <form onsubmit="return false" id="form">
+                    <label for="msg">Message:</label>
+                    <input type="text" id="msg" name="msg">
+                </form>
+                <button onclick="onSend()">Send</button>
+            </div>
+            <div class="buttons-ctn">
+                <button onclick="switchLight()">Light</button>
+                <button onclick="switchSound()">Sound</button>
+            </div>
+            <div class="joystick-ctn" id="joystick-ctn">
+<!--                <p style="text-align: center;">-->
+<!--                    X: <span id="x_coordinate"> </span>-->
+<!--                    Y: <span id="y_coordinate"> </span>-->
+<!--                    Speed: <span id="speed"> </span> %-->
+<!--                    Angle: <span id="angle"> </span>-->
+<!--                </p>-->
+            <canvas id="joystick-canvas"></canvas>
+            </div>
+        </div>
+        <div class="output-ctn">
+<!--            <ul id="messages"></ul>-->
+            <div class="chart-ctn">
+                <canvas id="temperature-chart-canvas"></canvas>
+            </div>
+            <div class="chart-ctn">
+                <canvas id="pressure-chart-canvas"></canvas>
+            </div>
+            <div class="scene">
+              <div class="cube" id="cube">
+                <div class="cube__face cube__face--front">front</div>
+                <div class="cube__face cube__face--back">back</div>
+                <div class="cube__face cube__face--right">right</div>
+                <div class="cube__face cube__face--left">left</div>
+                <div class="cube__face cube__face--top">top</div>
+                <div class="cube__face cube__face--bottom">bottom</div>
+              </div>
+            </div>
+        </div>
+    </div>
+    </body>
+</html>
